@@ -33,10 +33,12 @@ pipeline {
                 }
                 
                 stage('Deploy'){
-                    deploy adapters: [tomcat8(url: 'http://44.204.40.132:8080/', 
-                              credentialsId: 'tomcat')], 
-                     war: 'target/*.war',
-                     contextPath: '/appKevin'
+                    steps{
+                        deploy adapters: [tomcat8(url: 'http://44.204.40.132:8080/', 
+                                  credentialsId: 'tomcat')], 
+                         war: 'target/*.war',
+                         contextPath: '/appKevin'
+                    }
                 }
             }
         }
