@@ -37,10 +37,21 @@ pipeline {
         }
          stage('Deploy'){
             steps{
-                deploy adapters: [tomcat9(url: 'http://54.158.155.126:8080', 
-                          credentialsId: 'tomcat')], 
-                 contextPath: 'proyectoFinal',   
-                 war: 'target/*.war'
+                
+                script {
+                    if (env.BRANCH_NAME == 'main') {
+                        deploy adapters: [tomcat9(url: 'http://54.158.155.126:8080', 
+                            credentialsId: 'tomcat')], 
+                            contextPath: 'proyectoFinal',   
+                            war: 'target/*.war'
+                        echo 'War file deployed on production server'
+                    } else {
+                        echo 'Skipping deploy - Non production environment'
+                    }
+                }
+                
+                
+                
             }
         }
     }
