@@ -39,15 +39,16 @@ pipeline {
                          war: 'target/*.war'
                     }
                 }
-                
-                stage('Wait For deploy'){
-                    steps{
-                        sh ' echo waiting for deploy to finish'
-                        sh 'sleep 300'
-                    }
-                }
+  
+            }
+            
+        }
+         stage('Deploy'){
+            steps{
+                deploy adapters: [tomcat9(url: 'http://44.204.40.132:8080', 
+                          credentialsId: 'tomcat')], 
+                 war: 'target/*.war'
             }
         }
-        
     }
 }
