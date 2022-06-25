@@ -43,7 +43,7 @@ pipeline {
                 stage('Wait For deploy'){
                     steps{
                         sh ' echo waiting for deploy to finish'
-                        quietPeriod: 30
+                        sh 'sleep 300'
                     }
                 }
             }
