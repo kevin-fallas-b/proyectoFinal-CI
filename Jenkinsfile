@@ -1,7 +1,5 @@
 pipeline {
-    agent {
-        docker { image 'maven:3.8.5-eclipse-temurin-11-alpine' }
-    }
+    agent any
     stages {
         stage('Install Dependencies') {
             steps {
