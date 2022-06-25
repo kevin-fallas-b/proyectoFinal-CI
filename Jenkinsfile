@@ -17,6 +17,12 @@ pipeline {
                         sh 'mvn test --no-transfer-progress'
                     }
                 }
+                
+                 stage('SonarQube Analysis') {
+                    withSonarQubeEnv('sq-1') {
+                      sh "mvn clean verify sonar:sonar -Dsonar.projectKey=Proyecto-Kevin-Fallas"
+                    }
+                  }
 
                 stage('Build') {
                     steps {
@@ -25,10 +31,6 @@ pipeline {
                 }
             }
         }
-        stage('SAST') {
-                steps {
-                    echo 'npm run sonar'
-                }
-            }
+        
     }
 }
