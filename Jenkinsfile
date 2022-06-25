@@ -21,7 +21,7 @@ pipeline {
                  stage('SonarQube Analysis') {
                      steps{
                         withSonarQubeEnv('sq-1') {
-                          sh "mvn clean verify sonar:sonar -Dsonar.projectKey=Proyecto-Kevin-Fallas"
+                          sh "mvn clean verify sonar:sonar -Dsonar.projectKey=Proyecto-Kevin-Fallas --no-transfer-progress"
                         }
                      }
                   }
