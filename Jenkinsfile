@@ -8,19 +8,19 @@ pipeline {
             stages{
                 stage('Install Dependencies') {
                     steps {
-                        sh 'mvn dependency:resolve'
+                        sh 'mvn dependency:resolve --no-transfer-progress'
                     }
                 }
 
                 stage('Unit Tests') {
                     steps {
-                        sh 'mvn test'
+                        sh 'mvn test --no-transfer-progress'
                     }
                 }
 
                 stage('Build') {
                     steps {
-                        sh 'mvn clean install -DskipTests'
+                        sh 'mvn clean install -DskipTests --no-transfer-progress'
                     }
                 }
             }
