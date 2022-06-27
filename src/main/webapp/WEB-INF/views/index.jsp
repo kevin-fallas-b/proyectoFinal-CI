@@ -8,10 +8,10 @@
     <body>
         <form:form method="POST" modelAttribute="user">
             <form:label path="email">Email: </form:label>
-            <form:input path="email" type="text"/>
+            <form:input path="email" type="text" value="prueba"/>
             <form:label path="password">Password: </form:label>
             <form:input path="password" type="password" />
-            <input type="submit" value="Guardar" />
+            <input type="submit" value="submit" />
         </form:form>
     </body>
 </html>
